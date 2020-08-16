@@ -1,0 +1,5 @@
+Flask==1.1.2
+pyserini==0.9.4.0
+tensorflow-hub
+sentencepiece
+hunspell

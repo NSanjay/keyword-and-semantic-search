@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Search Results for:<span style="font-style:bold">{{query}}</span></h2>
+    <div>
+        {% for i, hit in hits %}
+        <div>
+            <a href="{{hit[0]}}">{{hit[1][1]}}</a>
+        </div>
+        <div>
+            <span>
+                {{hit[1][-1]}}
+            </span>
+        </div>
+        <div>
+            <span style="font-weight:bold">
+                Score: {{hit[1][0]}}
+            </span>
+        </div>
+        <br />
+        {% endfor %}
+    </div>
+</body>
+</html>
