@@ -32,8 +32,7 @@ Anserini retrieves indexed documents based on the BM25 algorithm, whose scoring
 is a variation of the TF-IDF algorithm.
 
 The top k retrieved paragraphs are filtered to obtain the top 10 pages with the highest scored
-paragraphs. Two paragraphs are considered for each page. The paragraphs are split
-into sentences. The embeddings of the query, and each sentence are obtained using the USE model. 
+paragraphs. Two paragraphs are considered for each page. The embeddings of the query, and each sentence are obtained using the USE model. 
 The USE model is used here, as it works well with individual words, sentences and short paragraphs [[Source](https://www.tensorflow.org/hub/tutorials/semantic_similarity_with_tf_hub_universal_encoder)].
 The [Universal Sentence Encoder-Lite](https://tfhub.dev/google/universal-sentence-encoder-lite/2) model is used here for latency purposes.
 
