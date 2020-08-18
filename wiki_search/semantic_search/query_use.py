@@ -19,8 +19,6 @@ class SemanticSearchUtil:
             self.sp.Load(spm_path)
 
     def rank_semantic(self, query, hits):
-        # print(query)
-        # print(hits)
         values, indices, dense_shape = self.process_to_IDs_in_sparse_format([query] + hits)
         with tf.Session(graph=self.graph) as sess:
             input_placeholder = tf.sparse_placeholder(tf.int64, shape=[None, None])
@@ -43,9 +41,6 @@ class SemanticSearchUtil:
 
         scores = np.inner(query_embedding, hits_embeddings)
 
-        print(f"len of sentences:: {len(message_embeddings)} and len of hits:: {len(hits_embeddings)}"
-              f"and len of scores:: {len(scores)}")
-        # print(scores)
         return scores
 
     def process_to_IDs_in_sparse_format(self, sentences):
@@ -55,4 +50,4 @@ class SemanticSearchUtil:
         dense_shape = (len(ids), max_len)
         values = [item for sublist in ids for item in sublist]
         indices = [[row, col] for row in range(len(ids)) for col in range(len(ids[row]))]
-        return (values, indices, dense_shape)
+        return values, indices, dense_shape
